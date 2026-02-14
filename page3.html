@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                background-color: rgb(0, 0, 0);
+                display: flex;
+                flex-direction: column;  
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;  
+                margin: 0;  
+            }
+
+            h1 {
+                color: white;  
+                margin-top: 15px;
+                margin-bottom: 20px;
+            }
+
+            input[type="text"] {
+                width: 300px;
+                padding: 15px;
+                font-size: 18px;
+                text-align: center;
+                border: 2px solid white;
+                border-radius: 5px;
+                background-color: rgb(30, 30, 30);
+                color: white;
+                outline: none;
+            }
+
+            input[type="text"]:focus {
+                border-color: rgb(100, 150, 255);
+                background-color: rgb(40, 40, 40);
+            }
+
+            button {
+                width: 330px;
+                padding: 15px;
+                margin-top: 15px;
+                font-size: 16px;
+                font-weight: bold;
+                border: none;
+                border-radius: 5px;
+                background-color: rgb(100, 150, 255);
+                color: white;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            button:hover {
+                background-color: rgb(70, 120, 225);
+            }
+
+            #error-message {
+                color: red;
+                margin-top: 15px;
+                font-size: 14px;
+                display: none;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" href="main.css">
+    </head>
+    <body>
+        <h1>AGE VERIFICATION REQUIRED</h1>
+
+         <input type="text" id="codeInput" placeholder="Enter code..." maxlength="10">
+    <button onclick="checkCode()">SUBMIT</button>
+    <p id="error-message">Invalid code. Please try again.</p>
+
+    <script>
+        document.getElementById('codeInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkCode();
+            }
+        });
+
+        function checkCode() {
+            const code = document.getElementById('codeInput').value;
+            const errorMessage = document.getElementById('error-message');
+            
+            if (code === '20') {
+                window.location.href = 'ageverification.html';
+            } else if (code === 'twenty') {
+                window.location.href = 'ageverification.html';
+            } else if (code === 'Twenty') {
+                window.location.href = 'ageverification.html';
+            } else {
+                // show da error message
+                errorMessage.style.display = 'block';
+                document.getElementById('codeInput').value = ''; // clear da input
+                
+                // hide error msg for like a second idk
+                setTimeout(function() {
+                    errorMessage.style.display = 'none';
+                }, 1000);
+            }
+        }
+    </script>
+    </body>
+</html>
